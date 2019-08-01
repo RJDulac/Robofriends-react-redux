@@ -15,10 +15,10 @@ class App extends Component {
     this.onSearchChange = this.onSearchChange.bind(this);
   }
 
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response => response.json())
-      .then(users => this.setState({ robots: users }));
+  async componentDidMount() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const users = await response.json();
+    this.setState({ robots: users });
   }
   onSearchChange(e) {
     this.setState({ searchfield: e.target.value });
